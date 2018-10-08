@@ -18,9 +18,9 @@
 #define IO4 17
 #define AD5 18
 #define AD6 19
-#define DLY 10         //EEPROM write and store delay time
 
 /* defines other constants used in the program */
+#define DLY 10         //EEPROM write and store delay time
 #define MAXCHARS 16    //for character string input
 #define IF 45000000    //radio IF in Hz
 #define VLO 136000000  //radio VHF bottom band limit in Hz
