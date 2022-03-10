@@ -8,6 +8,7 @@
  *              • convert channel switch into lookup table instead
  *              • convert tone switch into lookup table instead
  *              • improved input response output
+ * 2022-03-09   . Modified to initialise properly pins 14 to 19
  */
 
 /* Defines the Arduino pins as X2212 pins for ease of use */
@@ -20,12 +21,12 @@
 #define AD0 11
 #define STO 12
 #define LED 13
-#define IO1 14
-#define IO2 15
-#define IO3 16
-#define IO4 17
-#define AD5 18
-#define AD6 19
+#define IO1 A0
+#define IO2 A1
+#define IO3 A2
+#define IO4 A3
+#define AD5 A4
+#define AD6 A5
 
 /* Defines other constants used in the program */
 #define DLY       1           //EEPROM write and store delay time
@@ -42,15 +43,25 @@
 
 void setup() {
 /* Set modes and initialize pins */
-  for(int pin = 2; pin < 20; pin++) {
+  for(int pin = 2; pin < 14; pin++) {
     pinMode(pin, OUTPUT);
   }
+    pinMode(A0, OUTPUT);
+    pinMode(A1, OUTPUT);
+    pinMode(A2, OUTPUT);
+    pinMode(A3, OUTPUT);
+    pinMode(A4, OUTPUT);
+    pinMode(A5, OUTPUT);
+  
   for(int pin = 6; pin < 12; pin++) {
     digitalWrite(pin, LOW);
   }
-  for(int pin = 13; pin < 20; pin++) {
-    digitalWrite(pin, LOW);
-  }
+   digitalWrite(IO1, LOW);
+   digitalWrite(IO2, LOW);
+   digitalWrite(IO3, LOW);
+   digitalWrite(IO4, LOW);
+   digitalWrite(AD5, LOW);
+   digitalWrite(AD6, LOW);
   digitalWrite(WRT, HIGH);
   digitalWrite(STO, HIGH);
   Serial.begin(115200);
